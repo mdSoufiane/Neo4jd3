@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Exemple de Graphe - Détection de Fraude</title>
+  <style>
+    #graph {
+      width: 800px;
+      height: 600px;
+    }
+  </style>
+  <script src="https://unpkg.com/cytoscape/dist/cytoscape.min.js"></script>
+</head>
+<body>
+  <div id="graph"></div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function(){
+      var cy = cytoscape({
+        container: document.getElementById('graph'),
+        elements: [
+          { data: { id: 'node1', label: 'Noeud 1' } },
+          { data: { id: 'node2', label: 'Noeud 2' } },
+          { data: { id: 'node3', label: 'Noeud 3' } },
+          { data: { id: 'node4', label: 'Noeud 4' } },
+          { data: { id: 'node5', label: 'Noeud 5' } },
+          { data: { id: 'edge1', source: 'node1', target: 'node2', label: 'Relation 1' } },
+          { data: { id: 'edge2', source: 'node2', target: 'node3', label: 'Relation 2' } },
+          { data: { id: 'edge3', source: 'node2', target: 'node4', label: 'Relation 3' } },
+          { data: { id: 'edge4', source: 'node3', target: 'node5', label: 'Relation 4' } },
+        ],
+        style: [
+          {
+            selector: 'node',
+            style: {
+              'label': 'data(label)',
+              'background-color': '#f7f7f7',
+              'border-color': '#000',
+              'border-width': 2,
+              'width': 'label',
+              'height': 'label',
+              'text-valign': 'center',
+              'text-halign': 'center',
+              'font-size': 12,
+            }
+          },
+          {
+            selector: 'edge',
+            style: {
+              'label': 'data(label)',
+              'width': 2,
+              'curve-style': 'bezier',
+              'target-arrow-shape': 'triangle',
+              'target-arrow-color': '#000',
+              'line-color': '#ccc',
+            }
+          }
+        ],
+        layout: {
+          name: 'grid',
+          rows: 2
+        }
+      });
+    });
+  </script>
+</body>
+</html>
